@@ -1,4 +1,4 @@
-JMS Test Util: Active MQ provider
+JMS Test Util: Hornet Q provider
 ============
 
 Introduction
