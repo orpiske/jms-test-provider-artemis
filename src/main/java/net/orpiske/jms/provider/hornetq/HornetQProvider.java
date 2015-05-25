@@ -21,19 +21,33 @@ import org.hornetq.api.core.TransportConfiguration;
 import org.hornetq.jms.server.embedded.EmbeddedJMS;
 
 import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSException;
+import java.util.HashSet;
 
 public class HornetQProvider extends AbstractProvider {
-    private final EmbeddedJMS jmsServer = new EmbeddedJMS();
+    private final EmbeddedJMS jmsServer;
     private TransportConfiguration transportConfiguration;
+    private boolean started;
 
     public HornetQProvider() {
-
+        jmsServer = new EmbeddedJMS();
     }
 
     @Override
     public void start() throws ProviderInitializationException {
+        if (started) {
+            return;
+        }
+
+
         try {
             jmsServer.start();
+
+            connection = newConnection();
+            session = newSession();
+
+            started = true;
         } catch (Exception e) {
             throw new ProviderInitializationException("Unable to start the " +
                     "embedded broker", e);
@@ -42,8 +56,13 @@ public class HornetQProvider extends AbstractProvider {
 
     @Override
     public void stop() {
+        if (!started) {
+            return;
+        }
+
         try {
             jmsServer.stop();
+            started = false;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,9 +78,15 @@ public class HornetQProvider extends AbstractProvider {
 
     @Override
     protected Connection newConnection() throws ProviderInitializationException {
+        ConnectionFactory cf = (ConnectionFactory)jmsServer.lookup("/cf");
 
 
-        return null;
+        try {
+            return cf.createConnection();
+        } catch (JMSException e) {
+            throw new ProviderInitializationException("Unable to create a new" +
+                    " connection", e);
+        }
     }
 
 
