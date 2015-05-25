@@ -36,7 +36,7 @@ import javax.jms.Session;
 @Provider(
         value = HornetQProvider.class,
         configuration = HornetQConfiguration.class)
-public class ActiveMqSendReceiveTest extends AbstractSendReceive {
+public class HornetQSendReceiveTest extends AbstractSendReceive {
     @Consumer
     private MessageConsumer consumer;
 
