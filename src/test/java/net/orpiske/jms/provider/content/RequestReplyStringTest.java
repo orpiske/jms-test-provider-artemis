@@ -18,8 +18,8 @@ package net.orpiske.jms.provider.content;
 import net.orpiske.jms.content.AbstractRequestReply;
 import net.orpiske.jms.defaults.Defaults;
 import net.orpiske.jms.listener.ServerListener;
-import net.orpiske.jms.provider.configuration.HornetQConfiguration;
-import net.orpiske.jms.provider.hornetq.HornetQProvider;
+import net.orpiske.jms.provider.configuration.ArtemisConfiguration;
+import net.orpiske.jms.provider.hornetq.ArtemisProvider;
 import net.orpiske.jms.test.annotations.*;
 import net.orpiske.jms.test.runner.JmsTestRunner;
 import net.orpiske.jms.util.StringReplyBuilder;
@@ -37,8 +37,8 @@ import static org.junit.Assert.assertEquals;
  */
 @RunWith(JmsTestRunner.class)
 @Provider(
-        value = HornetQProvider.class,
-        configuration = HornetQConfiguration.class)
+        value = ArtemisProvider.class,
+        configuration = ArtemisConfiguration.class)
 public class RequestReplyStringTest extends AbstractRequestReply<TextMessage> {
 
     /**
@@ -80,8 +80,8 @@ public class RequestReplyStringTest extends AbstractRequestReply<TextMessage> {
         TextMessage textMessage = session.createTextMessage("marco");
 
         textMessage.setJMSCorrelationID(randomId());
-        textMessage.setStringProperty(ServerListener.REPLY_BUILDER,
-                StringReplyBuilder.class.getName());
+//        textMessage.setStringProperty(ServerListener.REPLY_BUILDER,
+//                StringReplyBuilder.class.getName());
         return textMessage;
     }
 

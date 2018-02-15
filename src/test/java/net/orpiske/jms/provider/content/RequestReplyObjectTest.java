@@ -20,13 +20,12 @@ import net.orpiske.jms.content.fixtures.DummySerializable;
 import net.orpiske.jms.content.fixtures.Fixtures;
 import net.orpiske.jms.defaults.Defaults;
 import net.orpiske.jms.listener.ServerListener;
-import net.orpiske.jms.provider.configuration.HornetQConfiguration;
-import net.orpiske.jms.provider.hornetq.HornetQProvider;
+import net.orpiske.jms.provider.configuration.ArtemisConfiguration;
+import net.orpiske.jms.provider.hornetq.ArtemisProvider;
 import net.orpiske.jms.test.annotations.*;
 import net.orpiske.jms.test.runner.JmsTestRunner;
 import net.orpiske.jms.util.SerializableReplyBuilder;
 import net.orpiske.jms.util.Util;
-import org.hornetq.api.core.client.HornetQClient;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,8 +42,8 @@ import static org.junit.Assert.fail;
  */
 @RunWith(JmsTestRunner.class)
 @Provider(
-        value = HornetQProvider.class,
-        configuration = HornetQConfiguration.class)
+        value = ArtemisProvider.class,
+        configuration = ArtemisConfiguration.class)
 public class RequestReplyObjectTest extends
         AbstractRequestReply<ObjectMessage> {
 

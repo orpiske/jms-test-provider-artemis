@@ -18,8 +18,8 @@ package net.orpiske.jms.provider.pattern;
 import net.orpiske.jms.defaults.Defaults;
 import net.orpiske.jms.listener.ServerListener;
 import net.orpiske.jms.pattern.AbstractTopic;
-import net.orpiske.jms.provider.configuration.HornetQConfiguration;
-import net.orpiske.jms.provider.hornetq.HornetQProvider;
+import net.orpiske.jms.provider.configuration.ArtemisConfiguration;
+import net.orpiske.jms.provider.hornetq.ArtemisProvider;
 import net.orpiske.jms.test.annotations.*;
 import net.orpiske.jms.test.runner.JmsTestRunner;
 import org.junit.Before;
@@ -36,8 +36,8 @@ import static org.junit.Assert.fail;
  */
 @RunWith(JmsTestRunner.class)
 @Provider(
-        value = HornetQProvider.class,
-        configuration = HornetQConfiguration.class)
+        value = ArtemisProvider.class,
+        configuration = ArtemisConfiguration.class)
 public class TopicStringTest extends AbstractTopic<TextMessage> {
 
     /**

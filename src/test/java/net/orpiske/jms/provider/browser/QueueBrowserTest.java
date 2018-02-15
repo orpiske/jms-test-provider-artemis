@@ -18,8 +18,8 @@ package net.orpiske.jms.provider.browser;
 import net.orpiske.jms.browser.AbstractQueueBrowser;
 import net.orpiske.jms.defaults.Defaults;
 import net.orpiske.jms.listener.ServerListener;
-import net.orpiske.jms.provider.configuration.HornetQConfiguration;
-import net.orpiske.jms.provider.hornetq.HornetQProvider;
+import net.orpiske.jms.provider.configuration.ArtemisConfiguration;
+import net.orpiske.jms.provider.hornetq.ArtemisProvider;
 import net.orpiske.jms.test.annotations.*;
 import net.orpiske.jms.test.runner.JmsTestRunner;
 import org.junit.Before;
@@ -39,8 +39,8 @@ import javax.jms.Session;
  */
 @RunWith(JmsTestRunner.class)
 @Provider(
-        value = HornetQProvider.class,
-        configuration = HornetQConfiguration.class)
+        value = ArtemisProvider.class,
+        configuration = ArtemisConfiguration.class)
 public class QueueBrowserTest extends AbstractQueueBrowser {
     private static final Logger logger = LoggerFactory.getLogger
             (QueueBrowserTest.class);

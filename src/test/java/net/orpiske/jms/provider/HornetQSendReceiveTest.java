@@ -17,8 +17,8 @@ package net.orpiske.jms.provider;
 
 
 import net.orpiske.jms.AbstractSendReceive;
-import net.orpiske.jms.provider.configuration.HornetQConfiguration;
-import net.orpiske.jms.provider.hornetq.HornetQProvider;
+import net.orpiske.jms.provider.configuration.ArtemisConfiguration;
+import net.orpiske.jms.provider.hornetq.ArtemisProvider;
 import net.orpiske.jms.test.annotations.Consumer;
 import net.orpiske.jms.test.annotations.JmsSession;
 import net.orpiske.jms.test.annotations.Producer;
@@ -34,8 +34,8 @@ import javax.jms.Session;
 
 @RunWith(JmsTestRunner.class)
 @Provider(
-        value = HornetQProvider.class,
-        configuration = HornetQConfiguration.class)
+        value = ArtemisProvider.class,
+        configuration = ArtemisConfiguration.class)
 public class HornetQSendReceiveTest extends AbstractSendReceive {
     @Consumer
     private MessageConsumer consumer;
